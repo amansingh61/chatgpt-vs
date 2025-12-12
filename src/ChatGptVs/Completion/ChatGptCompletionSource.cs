@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Threading;
 using System.Threading.Tasks;
 using ChatGptVs.Services;
@@ -22,13 +23,13 @@ namespace ChatGptVs.Completion
             var sourceText = triggerLocation.Snapshot.GetText();
             var suggestions = await _sessionManager.RequestSuggestionsAsync(sourceText, token).ConfigureAwait(false);
 
-            var completionItems = new List<CompletionItem>();
+            var completionItems = ImmutableArray.CreateBuilder<CompletionItem>();
             foreach (var suggestion in suggestions)
             {
                 completionItems.Add(new CompletionItem(suggestion, this));
             }
 
-            return new CompletionContext(completionItems);
+            return new CompletionContext(completionItems.ToImmutable());
         }
 
         public Task<object> GetDescriptionAsync(IAsyncCompletionSession session, CompletionItem item, CancellationToken token)

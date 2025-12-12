@@ -22,7 +22,7 @@ namespace ChatGptVs
         {
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
-            var settings = (ChatGptOptionsPage)await GetDialogPageAsync(typeof(ChatGptOptionsPage));
+            var settings = (ChatGptOptionsPage)GetDialogPage(typeof(ChatGptOptionsPage));
             var chatGptClient = new ChatGptClient(settings);
             var suggestionManager = new SuggestionSessionManager(chatGptClient);
 
