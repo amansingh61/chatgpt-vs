@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="ChatGptVs.3d8a3ccf-5c3e-4d7a-9b38-visualstudio2026" Version="0.1.0" Language="en-US" Publisher="OpenAI Community" />
+    <DisplayName>ChatGPT Coding Companion</DisplayName>
+    <Description xml:space="preserve">A Visual Studio 2026 extension that mirrors GitHub Copilot-like experiences using ChatGPT for login and inference. Provides completions, inline suggestions, and guarded replacements aligned with Microsoft extension standards.</Description>
+    <MoreInfo>https://openai.com/</MoreInfo>
+    <Tags>chatgpt,copilot,ai,completion</Tags>
+  </Metadata>
+  <Installation InstalledByMsi="false" AllUsers="false" />
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName=".NET Framework" Version="4.7.2" />
+  </Dependencies>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" Path="ChatGptVs.dll" />
+    <Asset Type="Microsoft.VisualStudio.MefComponent" Path="ChatGptVs.dll" />
+  </Assets>
+</PackageManifest>
