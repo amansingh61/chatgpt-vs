@@ -21,9 +21,12 @@ A Visual Studio 2026 VSIX extension that mirrors the GitHub Copilot experience w
 - `src/ChatGptVs/ChatGptVs.vsct` – Command table defining the Tools menu entry.
 
 ## Usage
-1. Install the VSIX into Visual Studio 2026.
-2. Open **Tools > Options > ChatGPT Coding Companion** and paste your ChatGPT login token.
-3. Start typing in a code file to see inline suggestions; accept them through IntelliSense.
-4. Select code and run **Tools > Apply ChatGPT Suggestion** to preview a replacement. Confirm to apply or cancel to keep existing code.
+1. Import `.vsconfig` in Visual Studio to install the **Visual Studio extension development** workload and VSSDK build tools if prompted.
+2. Open `ChatGptVs.sln` and restore NuGet packages.
+3. Build the `ChatGptVs` project to produce the VSIX.
+4. Install the VSIX into Visual Studio 2026.
+5. Open **Tools > Options > ChatGPT Coding Companion** and paste your ChatGPT login token.
+6. Start typing in a code file to see inline suggestions; accept them through IntelliSense.
+7. Select code and run **Tools > Apply ChatGPT Suggestion** to preview a replacement. Confirm to apply or cancel to keep existing code.
 
-> **Note:** This repository provides a reference-quality implementation skeleton. The VSIX build requires the Visual Studio SDK and will need restoration of NuGet packages in a Visual Studio 2026 environment.
+> **Note:** This repository provides a reference-quality implementation skeleton. The VSIX build requires the Visual Studio SDK (imported via `.vsconfig`) and will need restoration of NuGet packages in a Visual Studio 2026 environment.
