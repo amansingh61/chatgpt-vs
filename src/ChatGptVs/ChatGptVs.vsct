@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable">
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+
+  <Commands>
+    <Groups>
+      <Group guid="{172c7691-47b3-43d2-81fd-323243a2825e}" id="0x1020" priority="0x0000">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+      </Group>
+    </Groups>
+    <Buttons>
+      <Button guid="{172c7691-47b3-43d2-81fd-323243a2825e}" id="0x0100" priority="0x0100" type="Button">
+        <Parent guid="{172c7691-47b3-43d2-81fd-323243a2825e}" id="0x1020" />
+        <Icon guid="guidOfficeIcon" id="msotcidIntellisenseMenu" />
+        <Strings>
+          <ButtonText>Apply ChatGPT Suggestion</ButtonText>
+          <CommandName>ChatGPT Coding Companion: Apply Suggestion</CommandName>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol value="{172c7691-47b3-43d2-81fd-323243a2825e}" name="ChatGptVsCommandSet">
+      <IDSymbol value="0x0100" name="ApplyChatGptSuggestionId" />
+      <IDSymbol value="0x1020" name="ChatGptToolsGroup" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
