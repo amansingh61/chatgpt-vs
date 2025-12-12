@@ -46,21 +46,41 @@ namespace ChatGptVs.Services
             response.EnsureSuccessStatusCode();
 
             using var contentStream = await response.Content.ReadAsStreamAsync(cancellationToken);
-            using var document = await JsonDocument.ParseAsync(contentStream, cancellationToken: cancellationToken);
+
+            var completionResponse = await JsonSerializer.DeserializeAsync<ChatCompletionResponse>(
+                contentStream,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true },
+                cancellationToken);
 
             var completions = new List<string>();
-            if (document.RootElement.TryGetProperty("choices", out var choices))
+            if (completionResponse?.Choices != null)
             {
-                foreach (var choice in choices.EnumerateArray())
+                foreach (var choice in completionResponse.Choices)
                 {
-                    if (choice.TryGetProperty("message", out var message) && message.TryGetProperty("content", out var content))
+                    var content = choice?.Message?.Content;
+                    if (!string.IsNullOrWhiteSpace(content))
                     {
-                        completions.Add(content.GetString() ?? string.Empty);
+                        completions.Add(content);
                     }
                 }
             }
 
             return completions;
+        }
+
+        private sealed class ChatCompletionResponse
+        {
+            public List<ChatCompletionChoice>? Choices { get; set; }
+        }
+
+        private sealed class ChatCompletionChoice
+        {
+            public ChatCompletionMessage? Message { get; set; }
+        }
+
+        private sealed class ChatCompletionMessage
+        {
+            public string? Content { get; set; }
         }
     }
 }
